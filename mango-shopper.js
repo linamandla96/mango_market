@@ -14,7 +14,7 @@ module.exports = function(db) {
 	}
 
 	async function dealsForShop(shopId) {
-		const result = await db.manyOrNone(`select * from mango_deal where shop_id = $1`, [shopId]);
+		const result = await db.oneOrNone(`select * from mango_deal where shop_id = $1`, [shopId]);
 		return result;
 	}
 
@@ -35,7 +35,7 @@ module.exports = function(db) {
 	}
 
 	async function recommendDeals(amount) {
-		const result = await db.may(`
+		const result = await db.many(`
 			select name, price, qty, round((price/qty), 2) as unit_price from mango_deal 
 			join shop on shop.id = mango_deal.shop_id 
 			where price <= $1 order by unit_price asc`, [amount]);
