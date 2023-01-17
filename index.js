@@ -1,8 +1,20 @@
 const express = require('express');
 const exphbs  = require('express-handlebars');
+const pgp = require('pg-promise')();
 
 const app = express();
 const PORT =  process.env.PORT || 3019;
+
+let useSSL = false;
+let local = process.env.LOCAL || false;
+if (process.env.DATABASE_URL && !local) {
+    useSSL = true;
+}
+
+const connectionString = process.env.DATABASE_URL || 'postgresql://@localhost:5432/mango_market';
+
+const db = pgp(connectionString);
+
 
 // enable the req.body object - to allow us to use HTML forms
 app.use(express.json());
