@@ -1,10 +1,10 @@
 # mango_market
 
-It’s avocado season and there are special offers everywhere. Help your friends to keep track of finding the cheapest avos by creating a little web app using the supplied Factory Function in `avo-shopper.js`.
+It’s Mango season and there are special offers everywhere. Help your friends to keep track of finding the cheapest avos by creating a little web app using the supplied Factory Function in `mango-shopper.js`.
 
  Use the sql script in `sql/tables.sql` to create the required tables in your local database.
 
-Check out `test/avo-shopper.test.js` to see how to use the supplied Factory Function.
+Check out `test/mango-shopper.test.js` to see how to use the supplied Factory Function.
 
 ##  Create these screens:
 

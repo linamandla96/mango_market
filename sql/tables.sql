@@ -3,7 +3,7 @@ create table shop(
 	name text not null unique
 );
 
-create table avo_deal (
+create table mango_deal (
 	id serial not null primary key,
 	qty int,
 	price decimal(10,2),

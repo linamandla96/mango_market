@@ -14,13 +14,13 @@ module.exports = function(pool) {
 	}
 
 	async function dealsForShop(shopId) {
-		const result = await pool.query(`select * from avo_deal where shop_id = $1`, [shopId]);
+		const result = await pool.query(`select * from mango_deal where shop_id = $1`, [shopId]);
 		return result.rows;
 	}
 
 	async function topFiveDeals() {
-		const bestPriceSQL = `select name as shop_name, price, qty, round((price/qty), 2) as unit_price from avo_deal 
-		join shop on shop.id = avo_deal.shop_id 
+		const bestPriceSQL = `select name as shop_name, price, qty, round((price/qty), 2) as unit_price from mango_deal 
+		join shop on shop.id = mango_deal.shop_id 
 		order by (price/qty) asc 
 		limit 5`
 
@@ -30,14 +30,14 @@ module.exports = function(pool) {
 	}
 
 	async function createDeal(shopId, qty, price) {
-		await pool.query(`insert into avo_deal (shop_id, qty, price) values ($1, $2, $3)`, 
+		await pool.query(`insert into mango_deal (shop_id, qty, price) values ($1, $2, $3)`, 
 			[shopId, qty, price]);
 	}
 
 	async function recommendDeals(amount) {
 		const result = await pool.query(`
-			select name, price, qty, round((price/qty), 2) as unit_price from avo_deal 
-			join shop on shop.id = avo_deal.shop_id 
+			select name, price, qty, round((price/qty), 2) as unit_price from mango_deal 
+			join shop on shop.id = mango_deal.shop_id 
 			where price <= $1 order by unit_price asc`, [amount]);
 
 		return result.rows;

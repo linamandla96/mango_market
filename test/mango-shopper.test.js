@@ -1,6 +1,6 @@
 let assert = require("assert");
 const pg = require("pg");
-let AvoShopper = require("../avo-shopper");
+let AvoShopper = require("../mango-shopper");
 const Pool = pg.Pool;
 require('dotenv').config()
 
