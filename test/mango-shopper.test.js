@@ -1,61 +1,58 @@
 let assert = require("assert");
-const pg = require("pg");
-let AvoShopper = require("../mango-shopper");
-const Pool = pg.Pool;
+const pgp = require('pg-promise')();
+let MangoShopper = require("../mango-shopper");
 require('dotenv').config()
 
-const connectionString = process.env.DATABASE_URL || 'postgresql://avos:avos123@localhost:5432/avo_shopper';
+const connectionString = process.env.DATABASE_URL || 'postgresql://@localhost:5432/mango_shopper';
 
-const pool = new Pool({
-    connectionString
-});
+const db = pgp(connectionString);
 
-describe('The avo shopper', function () {
+describe('The mango shopper', function () {
 
     beforeEach(async function () {
-        await pool.query(`delete from avo_deal;`)
+        await pool.query(`delete from mango_deal;`)
         await pool.query(`delete from shop;`)
     });
 
     it('should be able to create a shop', async function () {
 
-        const avoShopper = AvoShopper(pool);
+        const mangoShopper = MangoShopper(db);
 
-        await avoShopper.createShop('Veggie Tales');
-        const shops = await await avoShopper.listShops();
+        await mangoShopper.createShop('Veggie Tales');
+        const shops = await await mangoShopper.listShops();
 
         assert.equal('Veggie Tales', shops[0].name);
     });
 
     it('should be able to return a list of all shops', async function () {
 
-        const avoShopper = AvoShopper(pool);
+        const mangoShopper = MangoShopper(db);
 
-        const beforeShops = await avoShopper.listShops();
+        const beforeShops = await mangoShopper.listShops();
         assert.deepStrictEqual(0, beforeShops.length);
 
-        await avoShopper.createShop('Veggie Tales');
-        await avoShopper.createShop('Veggie Lovers');
-        await avoShopper.createShop('Corner Veggies');
+        await mangoShopper.createShop('Veggie Tales');
+        await mangoShopper.createShop('Veggie Lovers');
+        await mangoShopper.createShop('Corner Veggies');
 
-        const shops = await avoShopper.listShops();
+        const shops = await mangoShopper.listShops();
         assert.deepStrictEqual(3, shops.length);
 
     });
 
-    it('should be able to create an avo deal and find it again', async function () {
+    it('should be able to create an mango deal and find it again', async function () {
 
-        const avoShopper = AvoShopper(pool);
+        const mangoShopper = MangoShopper(db);
 
-        const shopId = await avoShopper.createShop('Veggie Tales');
-        await avoShopper.createDeal(shopId, 5, 28);
+        const shopId = await mangoShopper.createShop('Veggie Tales');
+        await mangoShopper.createDeal(shopId, 5, 28);
 
 
     })
 
     it('should return all the deals for a given shop', async function () {
 
-        const avoShopper = AvoShopper(pool);
+        const mangoShopper = MangoShopper(db);
 
 
 
@@ -63,24 +60,24 @@ describe('The avo shopper', function () {
 
     it('should return the top 5 deals', async function () {
 
-        const avoShopper = AvoShopper(pool);
+        const mangoShopper = MangoShopper(db);
 
-        const shopId1 = await avoShopper.createShop('Veggie Tales');
-        const shopId2 = await avoShopper.createShop('Veggie Max');
+        const shopId1 = await mangoShopper.createShop('Veggie Tales');
+        const shopId2 = await mangoShopper.createShop('Veggie Max');
 
         const createDeals = [
-            avoShopper.createDeal(shopId1, 5, 38),
-            avoShopper.createDeal(shopId2, 4, 35),
-            avoShopper.createDeal(shopId1, 4, 28),
-            avoShopper.createDeal(shopId1, 3, 28),
-            avoShopper.createDeal(shopId2, 2, 28),
-            avoShopper.createDeal(shopId1, 1, 28),
-            avoShopper.createDeal(shopId1, 3, 32),
-            avoShopper.createDeal(shopId1, 2, 28)];
+            mangoShopper.createDeal(shopId1, 5, 38),
+            mangoShopper.createDeal(shopId2, 4, 35),
+            mangoShopper.createDeal(shopId1, 4, 28),
+            mangoShopper.createDeal(shopId1, 3, 28),
+            mangoShopper.createDeal(shopId2, 2, 28),
+            mangoShopper.createDeal(shopId1, 1, 28),
+            mangoShopper.createDeal(shopId1, 3, 32),
+            mangoShopper.createDeal(shopId1, 2, 28)];
 
         await Promise.all(createDeals);
 
-        const topFiveDeals = await avoShopper.topFiveDeals();
+        const topFiveDeals = await mangoShopper.topFiveDeals();
 
         assert.equal(5, topFiveDeals.length);
 
@@ -124,23 +121,23 @@ describe('The avo shopper', function () {
 
     it('should return the recommeded deals', async function () {
 
-        const avoShopper = AvoShopper(pool);
+        const mangoShopper = MangoShopper(db);
 
-        const shopId1 = await avoShopper.createShop('Veggie Tales');
-        const shopId2 = await avoShopper.createShop('Veggie Max');
+        const shopId1 = await mangoShopper.createShop('Veggie Tales');
+        const shopId2 = await mangoShopper.createShop('Veggie Max');
 
         const createDeals = [
-            avoShopper.createDeal(shopId1, 5, 40),
-            avoShopper.createDeal(shopId2, 4, 35),
-            avoShopper.createDeal(shopId1, 4, 28),
-            avoShopper.createDeal(shopId1, 3, 28),
-            avoShopper.createDeal(shopId2, 2, 25),
-            avoShopper.createDeal(shopId1, 1, 15),
-            avoShopper.createDeal(shopId1, 3, 32)];
+            mangoShopper.createDeal(shopId1, 5, 40),
+            mangoShopper.createDeal(shopId2, 4, 35),
+            mangoShopper.createDeal(shopId1, 4, 28),
+            mangoShopper.createDeal(shopId1, 3, 28),
+            mangoShopper.createDeal(shopId2, 2, 25),
+            mangoShopper.createDeal(shopId1, 1, 15),
+            mangoShopper.createDeal(shopId1, 3, 32)];
 
         await Promise.all(createDeals);
 
-        const recommendDeals = await avoShopper.recommendDeals(30);
+        const recommendDeals = await mangoShopper.recommendDeals(30);
 
         assert.equal(4, recommendDeals.length);
 
@@ -178,7 +175,7 @@ describe('The avo shopper', function () {
 
 
     after(function () {
-        pool.end();
+        db.$pool.end()
     });
 
 });

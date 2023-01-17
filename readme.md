@@ -31,12 +31,13 @@ To get going:
 
 ## Other things
 
-* Deploy your app to heroku - share the link with us
+<!-- * Deploy your app to heroku - share the link with us -->
+* Make a demo of how your app is working using : https://www.loom.com/
 * Ensure your app is responsive.
 * Create a color scheme with some elements of green using : https://coolors.co/
 * Create a paper prototype for your screens - plan your screens. Add this to your repo in GitHub.
 * Use ExpressJS and Handlebars we started the app for you in `index.js`.
-* Setup your own travis deployment.
+<!-- * Setup your own travis deployment. -->
 
 ## Share this with us via email
 
