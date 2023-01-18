@@ -1,12 +1,12 @@
 module.exports = function (db) {
 
 	async function createShop(shopName) {
-		const result = await db.one(`insert into shop (name) values ($1) returning id`, [shopName]);
+		const result = await db.one(`insert into shop (name) values ($1) returning id`, [shopName], (data) => data.id);
 		return result;
 	}
 
 	async function listShops() {
-		const result = await db.many(`select * from shop`);
+		const result = await db.manyOrNone(`select * from shop`);
 		return result;
 	}
 
