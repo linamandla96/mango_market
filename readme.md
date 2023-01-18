@@ -32,7 +32,7 @@ To get going:
 ## Other things
 
 <!-- * Deploy your app to heroku - share the link with us -->
-* Make a demo of how your app is working using (5 minutesb ) : https://www.loom.com/
+* Make a demo of how your app is working using (5 minutes) : https://www.loom.com/
 * Ensure your app is responsive.
 * Create a color scheme with some elements of green using : https://coolors.co/
 * Create a paper prototype for your screens - plan your screens. Add this to your repo in GitHub.
