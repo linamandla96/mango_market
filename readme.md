@@ -1,6 +1,6 @@
 # mango_market
 
-The Mengo market stalls(shops) are running a mango special, Help your friend Vusi to purchase mengo’s  on special for his fruit and veg shop. With an existing factory function create a web application that will help Vusi to see which mangos that are on special purchase `mango-shopper.js.`. 
+The Mango market stalls(shops) are running a mango special, Help your friend Vusi to purchase mangos  on special for his fruit and veg shop. With an existing factory function create a web application that will help Vusi to see which mangos that are on special purchase `mango-shopper.js.`. 
 
 Use the sql script in `sql/tables.sql` to create the required tables in your local database.
 
