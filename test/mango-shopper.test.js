@@ -11,8 +11,8 @@ const db = pgp(connectionString);
 describe('The mango shopper', function () {
 
     beforeEach(async function () {
-        await pool.query(`delete from mango_deal;`)
-        await pool.query(`delete from shop;`)
+        await db.none(`delete from mango_deal;`)
+        await db.none(`delete from shop;`)
     });
 
     it('should be able to create a shop', async function () {
