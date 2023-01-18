@@ -11,6 +11,7 @@ if (process.env.DATABASE_URL && !local) {
     useSSL = true;
 }
 
+// TODO configure this to work.
 const connectionString = process.env.DATABASE_URL || 'postgresql://@localhost:5432/mango_market';
 
 const db = pgp(connectionString);

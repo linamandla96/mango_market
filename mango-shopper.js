@@ -2,10 +2,6 @@ module.exports = function(db) {
 
 	async function createShop(shopName) {
 		const result = await db.none(`insert into shop (name) values ($1) returning id`, [shopName]);
-		if (result.rowCount === 1) {
-			return result;
-		}
-		return null;
 	}
 
 	async function listShops() {

@@ -3,6 +3,7 @@ const pgp = require('pg-promise')();
 let MangoShopper = require("../mango-shopper");
 require('dotenv').config()
 
+// TODO configure this to work.
 const connectionString = process.env.DATABASE_URL || 'postgresql://@localhost:5432/mango_shopper';
 
 const db = pgp(connectionString);
