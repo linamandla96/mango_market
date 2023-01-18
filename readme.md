@@ -1,8 +1,8 @@
 # mango_market
 
-It’s Mango season and there are special offers everywhere. Help your friends to keep track of finding the cheapest mango's by creating a little web app using the supplied Factory Function in `mango-shopper.js`.
+The Mengo market stalls(shops) are running a mango special, Help your friend Vusi to purchase mengo’s  on special for his fruit and veg shop. With an existing factory function create a web application that will help Vusi to see which mangos that are on special purchase `mango-shopper.js.`. 
 
- Use the sql script in `sql/tables.sql` to create the required tables in your local database.
+Use the sql script in `sql/tables.sql` to create the required tables in your local database.
 
 Check out `test/mango-shopper.test.js` to see how to use the supplied Factory Function.
 

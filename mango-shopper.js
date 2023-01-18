@@ -1,7 +1,8 @@
-module.exports = function(db) {
+module.exports = function (db) {
 
 	async function createShop(shopName) {
-		const result = await db.none(`insert into shop (name) values ($1) returning id`, [shopName]);
+		const result = await db.one(`insert into shop (name) values ($1) returning id`, [shopName]);
+		return result;
 	}
 
 	async function listShops() {
@@ -26,7 +27,7 @@ module.exports = function(db) {
 	}
 
 	async function createDeal(shopId, qty, price) {
-		await db.none(`insert into mango_deal (shop_id, qty, price) values ($1, $2, $3)`, 
+		await db.none(`insert into mango_deal (shop_id, qty, price) values ($1, $2, $3)`,
 			[shopId, qty, price]);
 	}
 
