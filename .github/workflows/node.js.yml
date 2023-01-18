@@ -41,7 +41,7 @@ jobs:
     - name: create postgresql tables
       run: PGPASSWORD=gh123 psql -h localhost -U gh -d mango_db -a -f ./sql/tables.sql
     - name: populate shops
-      run: PGPASSWORD=gh123 psql -h localhost -U gh -d mango_db -a -f ./data.sql
+      run: PGPASSWORD=gh123 psql -h localhost -U gh -d mango_db -a -f ./sql/data.sql
     - name: run tests with postgresql
       run:
         npm test
