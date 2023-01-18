@@ -19,10 +19,10 @@ describe('The mango shopper', function () {
 
         const mangoShopper = MangoShopper(db);
 
-        await mangoShopper.createShop('Veggie Tales');
+        await mangoShopper.createShop('Mango Market');
         const shops = await await mangoShopper.listShops();
 
-        assert.equal('Veggie Tales', shops[0].name);
+        assert.equal('Mango Market', shops[0].name);
     });
 
     it('should be able to return a list of all shops', async function () {
@@ -32,8 +32,8 @@ describe('The mango shopper', function () {
         const beforeShops = await mangoShopper.listShops();
         assert.deepStrictEqual(0, beforeShops.length);
 
-        await mangoShopper.createShop('Veggie Tales');
-        await mangoShopper.createShop('Veggie Lovers');
+        await mangoShopper.createShop('Mango Market');
+        await mangoShopper.createShop('Mangos to Go');
         await mangoShopper.createShop('Corner Veggies');
 
         const shops = await mangoShopper.listShops();
@@ -45,7 +45,7 @@ describe('The mango shopper', function () {
 
         const mangoShopper = MangoShopper(db);
 
-        const shopId = await mangoShopper.createShop('Veggie Tales');
+        const shopId = await mangoShopper.createShop('Mango Market');
         await mangoShopper.createDeal(shopId, 5, 28);
 
 
@@ -63,8 +63,8 @@ describe('The mango shopper', function () {
 
         const mangoShopper = MangoShopper(db);
 
-        const shopId1 = await mangoShopper.createShop('Veggie Tales');
-        const shopId2 = await mangoShopper.createShop('Veggie Max');
+        const shopId1 = await mangoShopper.createShop('Mango Market');
+        const shopId2 = await mangoShopper.createShop('Max Mangos');
 
         const createDeals = [
             mangoShopper.createDeal(shopId1, 5, 38),
@@ -86,31 +86,31 @@ describe('The mango shopper', function () {
             {
                 "price": "28.00",
                 "qty": 4,
-                "shop_name": "Veggie Tales",
+                "shop_name": "Mango Market",
                 "unit_price": "7.00",
             },
             {
                 "price": "38.00",
                 "qty": 5,
-                "shop_name": "Veggie Tales",
+                "shop_name": "Mango Market",
                 "unit_price": "7.60",
             },
             {
                 "price": "35.00",
                 "qty": 4,
-                "shop_name": "Veggie Max",
+                "shop_name": "Max Mangos",
                 "unit_price": "8.75"
             },
             {
                 "price": "28.00",
                 "qty": 3,
-                "shop_name": "Veggie Tales",
+                "shop_name": "Mango Market",
                 "unit_price": "9.33"
             },
             {
                 "price": "32.00",
                 "qty": 3,
-                "shop_name": "Veggie Tales",
+                "shop_name": "Mango Market",
                 "unit_price": "10.67"
             }
         ];
@@ -124,8 +124,8 @@ describe('The mango shopper', function () {
 
         const mangoShopper = MangoShopper(db);
 
-        const shopId1 = await mangoShopper.createShop('Veggie Tales');
-        const shopId2 = await mangoShopper.createShop('Veggie Max');
+        const shopId1 = await mangoShopper.createShop('Mango Market');
+        const shopId2 = await mangoShopper.createShop('Max Mangos');
 
         const createDeals = [
             mangoShopper.createDeal(shopId1, 5, 40),
@@ -145,25 +145,25 @@ describe('The mango shopper', function () {
         const expectedDeals = [
 
             {
-                "name": "Veggie Tales",
+                "name": "Mango Market",
                 "price": "28.00",
                 "qty": 4,
                 "unit_price": "7.00"
             },
             {
-                "name": "Veggie Tales",
+                "name": "Mango Market",
                 "price": "28.00",
                 "qty": 3,
                 "unit_price": "9.33"
             },
             {
-                "name": "Veggie Max",
+                "name": "Max Mangos",
                 "price": "25.00",
                 "qty": 2,
                 "unit_price": "12.50"
             },
             {
-                "name": "Veggie Tales",
+                "name": "Mango Market",
                 "price": "15.00",
                 "qty": 1,
                 "unit_price": "15.00"
