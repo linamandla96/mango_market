@@ -1,1 +1,51 @@
 <h2>Best deals</h2>
+
+<div>
+
+<div>
+    <div><span class="lebel">Total</span>{{total}}</div>
+</div>
+
+<div>
+    <form  action="/buy" method="POST">
+    <h1>Buy</h1>
+
+    <input  type="text" name="qty" placeholder="buy fruits" value=""> 
+    <input type="submit"  value="buy">
+
+</form>
+
+</div>
+
+
+
+
+<div>
+
+    <form action="/add-price" method="POST"> 
+    <h1>Add prcice<h1>
+
+    <input  type="text" name="price" placeholder="add price" value=" {{counter}}"> 
+    <input type="submit"  value="setprice">
+</div>
+</form>
+<div>
+
+    <form action="/select/shop" method="POST">
+    <h1>Select shop Deal<h1>
+
+
+{{#each allShops }}
+
+<option value=""> {{name}}</option>
+    
+  {{/each}}  
+    
+    
+
+</form>
+<a href="/allshops"> submit</a>
+</div>
+
+
+</div>

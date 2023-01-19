@@ -1,0 +1,26 @@
+<h1>Mango with their quantity</h1>
+
+<form action="/showmengos" method="POST">
+
+
+
+<tr>
+
+<th>qty</th>
+<th>price</th>
+
+</tr>
+
+{{#each shopmangos}}
+<tr>
+
+    <td>{{mango_dealId}}</td>
+    <td>{{qty}}</td>
+    <td>{{shop_id}}</td>
+</tr>
+
+{{/each}}
+
+<a href="/addnew-shop"> add</a>
+
+</form>
